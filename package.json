@@ -1,0 +1,28 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@nuxt/image": "1.8.1",
+    "@nuxtjs/auth": "^4.9.1",
+    "@nuxtjs/auth-next": "^5.0.0-1667386184.dfbbb54",
+    "@nuxtjs/tailwindcss": "6.12.2",
+    "@sidebase/nuxt-auth": "^0.10.0",
+    "form-data": "^4.0.1",
+    "nuxt": "^3.14.1592",
+    "vue": "latest",
+    "vue-router": "latest"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/FlameXS01/VSFront2.git",
+  "author": "FlameXS01 <perezjailer41@gmail.com>",
+  "license": "MIT"
+}
