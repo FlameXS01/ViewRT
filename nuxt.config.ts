@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     },
   },
 
+
   runtimeConfig: {
     public: {
       BACKEND_URL: process.env.backend_url, // Variable de entorno para el backend
@@ -83,7 +84,8 @@ export default defineNuxtConfig({
     globalAppMiddleware: {
       isEnabled: true, // Habilitar middleware global
       allow404WithoutAuth: true // Permitir 404 sin autenticación
-    }
+    },
+    
   },
     compatibilityDate: '2025-01-15'
 });
