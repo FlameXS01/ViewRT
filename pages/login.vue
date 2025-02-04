@@ -32,7 +32,7 @@ Copy
                 type="text" 
                 required
                 class="w-full px-4 py-3 border-2 border-red-200 rounded-lg focus:border-red-500 focus:ring-2 focus:ring-red-300 transition-all placeholder-red-400"
-                placeholder="Tu usuario único"
+                placeholder="Tu correo único"
               >
               <svg class="absolute right-3 top-3.5 h-5 w-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>

@@ -58,7 +58,7 @@
       </div>
 
       <!-- Botones de acción -->
-      <div class="pt-3 border-t border-gray-200 mt-auto">
+      <div class="pt-3 border-t border-gray-200 mt-auto" v-if="showP">
         <div class="flex justify-between items-center">
           <div class="flex gap-2">
             <button 
@@ -88,7 +88,9 @@
 
 <script setup>
 import { useRuntimeConfig } from '#imports';
-
+const { data } = useAuth();
+const userRole = computed(() => data.value?.rol);  
+const showP = computed(() => userRole.value === 'administrador');    
 
 const config = useRuntimeConfig();
 const props = defineProps({
