@@ -72,7 +72,9 @@ const showForm = ref(false);
 const selectedProduct = ref(null);
 const errorMessage = ref(''); // Estado para el mensaje de error
 
-const isAdmin = ref(false); // Estado para verificar si el usuario es administrador
+  
+
+const isAdmin = ref(false); 
 
 const fetchProducts = async () => {
   try {

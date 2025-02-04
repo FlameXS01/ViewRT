@@ -29,7 +29,7 @@
 
       <label class="block mb-2">Unidades</label>
       <div class="mb-4">
-        <div v-if="units.length === 0" class="text-gray-400">Cargando unidades...</div>
+        <div v-if="units.length === 0" class="text-gray-400">No tenemos unidades...</div>
         <div v-else>
           <div v-for="unit in units" :key="unit.id" class="flex items-center mb-2">
             <input
