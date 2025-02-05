@@ -1,63 +1,63 @@
 <template>
-    <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
-        <h3 class="text-xl font-bold text-orange-500 mb-4">Autenticación de Dos Factores</h3>
-        
-        <div v-if="!twoFactorEnabled">
-        <p class="text-gray-300 mb-4">
-            Escanea el código QR con Google Authenticator o una aplicación similar:
+    <div class="bg-white/90 backdrop-blur-sm rounded-lg p-6 shadow-lg">
+      <h3 class="text-xl font-bold text-red-600 mb-4">Autenticación de Dos Factores</h3>
+      
+      <div v-if="!twoFactorEnabled">
+        <p class="text-gray-700 mb-4">
+          Escanea el código QR con Google Authenticator o una aplicación similar:
         </p>
         <div v-if="qrCode" class="mb-4 flex justify-center">
-            <img 
+          <img 
             :src="qrCode" 
             alt="QR Code" 
             class="max-w-[200px] h-auto"
-            />
+          />
         </div>
-            <div v-if="!qrCode" class="mb-4 text-gray-400">
-            Cargando código QR...
+        <div v-if="!qrCode" class="mb-4 text-gray-500">
+          Cargando código QR...
         </div>
         <div class="mb-4">
-            <label class="block text-gray-300 text-sm font-medium mb-2">
+          <label class="block text-gray-700 text-sm font-medium mb-2">
             Código de verificación
-            </label>
-            <input
+          </label>
+          <input
             v-model="verificationCode"
             type="text"
             placeholder="Ingresa el código de 6 dígitos"
-            class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white 
-                    placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
-            />
+            class="w-full px-4 py-3 bg-white text-gray-800 border border-gray-300 rounded-lg 
+                   placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500"
+          />
         </div>
         <button
-            @click="verifyAndEnable"
-            class="w-full bg-orange-500 text-white py-3 rounded-lg font-medium 
-                    hover:bg-orange-600 transition-all"
-            :disabled="isLoading || !verificationCode"
+          @click="verifyAndEnable"
+          class="w-full bg-red-500 text-white py-3 rounded-lg font-medium 
+                 hover:bg-red-600 transition-all"
+          :disabled="isLoading || !verificationCode"
         >
-            {{ isLoading ? 'Verificando...' : 'Activar 2FA' }}
+          {{ isLoading ? 'Verificando...' : 'Activar 2FA' }}
         </button>
-        </div>
-
-        <div v-else>
+      </div>
+  
+      <div v-else>
         <div class="flex items-center mb-4">
-            <span class="text-orange-400 mr-2">✓</span>
-            <p class="text-gray-300">2FA está activado</p>
+          <span class="text-green-500 mr-2">✓</span>
+          <p class="text-gray-700">2FA está activado</p>
         </div>
         <button
-            @click="disable2FA"
-            class="w-full bg-red-500 text-white py-3 rounded-lg font-medium 
-                    hover:bg-red-600 transition-all"
-            :disabled="isLoading"
+          @click="disable2FA"
+          class="w-full bg-red-500 text-white py-3 rounded-lg font-medium 
+                 hover:bg-red-600 transition-all"
+          :disabled="isLoading"
         >
-            {{ isLoading ? 'Desactivando...' : 'Desactivar 2FA' }}
+          {{ isLoading ? 'Desactivando...' : 'Desactivar 2FA' }}
         </button>
-        </div>
-
-        <div v-if="error" class="mt-4 p-4 bg-red-500 bg-opacity-20 border border-red-500 rounded-lg">
-        <p class="text-red-500 text-sm">{{ error }}</p>
-        </div>
+      </div>
+  
+      <div v-if="error" class="mt-4 p-4 bg-red-100 border border-red-300 rounded-lg">
+        <p class="text-red-600 text-sm">{{ error }}</p>
+      </div>
     </div>
-    </template>
+  </template>
     
     <script setup>
     import { ref, onMounted } from 'vue';
