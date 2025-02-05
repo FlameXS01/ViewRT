@@ -88,23 +88,31 @@ Copy
 
 <script setup>
 import { ref } from 'vue';
-import { definePageMeta } from '#imports';
+import { definePageMeta, useRouter } from '#imports';
 import { useRuntimeConfig } from '#app';
 
-const { signIn, token } = useAuth();
+
+const { signIn, token, data } = useAuth();
 
 const nombre_usuario = ref('');
 const password = ref('');
 const error = ref('');
+const router = useRouter();
 const config = useRuntimeConfig();
 
 const login = async () => {
   try {
     const response = await signIn(
       { email: nombre_usuario.value, password: password.value },
-      { callbackUrl: "/", redirect: true }
+      { callbackUrl: "/", redirect: false }
     );
-
+    if (data.value?.twoFactorEnabled) {
+      console.log('Usuario tiene 2FA, redirigiendo a validación...');
+      router.push('/validate2fa');
+    } else {
+      console.log('Usuario sin 2FA, redirigiendo a home...');
+      router.push('/');
+    }
   } catch (err) {
     console.error('Error durante el inicio de sesión:', err); // Muestra el error completo
     error.value = err?.response?.data?.message || 'Credenciales inválidas. Por favor, verifica tus datos.';
