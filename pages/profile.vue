@@ -9,7 +9,7 @@
         loading="eager"
       />
   
-      <section class="text-center relative z-10 max-w-6xl mx-auto">
+      <section class="text-center relative z-10 max-w-6xl mx-auto w-full">
         <h1 class="mb-6 md:mb-10
                   text-3xl 
                   sm:text-4xl 
@@ -23,8 +23,8 @@
                   duration-300
                   hover:scale-105
                   bg-gradient-to-r
-                  from-amber-300
-                  via-orange-400
+                  from-red-400
+                  via-red-500
                   to-red-600
                   text-transparent
                   bg-clip-text
@@ -32,68 +32,79 @@
           Mi Perfil
         </h1>
   
-        <div class="max-w-4xl mx-auto">
+        <div class="max-w-4xl mx-auto px-4">
           <!-- Encabezado del perfil -->
-          <div class="bg-gray-800 rounded-lg p-6 mb-8 shadow-lg">
-            <div class="flex items-center space-x-4">
-              <div class="bg-orange-500 rounded-full p-4">
-                <span class="text-2xl text-white">{{ userInitials }}</span>
+          <div class="bg-white/90 backdrop-blur-sm rounded-lg p-6 mb-8 shadow-lg">
+            <div class="flex flex-col sm:flex-row items-center space-x-4">
+              <div class="bg-red-500 rounded-full w-16 h-16 flex items-center justify-center mb-4 sm:mb-0">
+                <span class="text-2xl text-white font-medium">{{ userInitials }}</span>
               </div>
-              <div>
-                <h2 class="text-xl text-white font-semibold">{{ userData.username }}</h2>
-                <p class="text-gray-400">{{ userData.rol }}</p>
+              <div class="text-center sm:text-left">
+                <h2 class="text-xl text-gray-800 font-semibold">{{ userData.username }}</h2>
+                <p class="text-red-600 font-medium">{{ userData.rol }}</p>
               </div>
             </div>
           </div>
   
           <!-- Información del usuario -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <!-- Detalles del perfil -->
-            <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
-              <h3 class="text-xl font-bold text-orange-500 mb-6">Detalles del Perfil</h3>
+            <div class="bg-white/90 backdrop-blur-sm rounded-lg p-6 shadow-lg">
+              <h3 class="text-xl font-bold text-red-600 mb-6 border-b pb-2">Detalles del Perfil</h3>
               <form @submit.prevent="updateProfile" class="space-y-4">
                 <div>
-                  <label class="block text-gray-300 mb-2">Nombre de Usuario</label>
+                  <label class="block text-gray-700 mb-2 font-medium">Nombre de Usuario</label>
                   <input
                     v-model="formData.username"
                     type="text"
-                    class="w-full px-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none 
-                            focus:ring-2 focus:ring-orange-500"
+                    class="w-full px-4 py-3 bg-white text-gray-800 rounded-lg border border-gray-200
+                          focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
                   />
                 </div>
                 <div>
-                  <label class="block text-gray-300 mb-2">Email</label>
+                  <label class="block text-gray-700 mb-2 font-medium">Email</label>
                   <input
                     v-model="formData.email"
                     type="email"
-                    class="w-full px-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none 
-                            focus:ring-2 focus:ring-orange-500"
+                    class="w-full px-4 py-3 bg-white text-gray-800 rounded-lg border border-gray-200
+                          focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                  />
+                </div>
+                <div>
+                  <label class="block text-gray-700 mb-2 font-medium">Número de Teléfono</label>
+                  <input
+                    v-model="formData.phone_number"
+                    type="tel"
+                    class="w-full px-4 py-3 bg-white text-gray-800 rounded-lg border border-gray-200
+                          focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                    placeholder="Ingresa tu número de contacto"
                   />
                 </div>
                 <button
                   type="submit"
-                  class="w-full bg-orange-500 text-white py-2 px-4 rounded-lg hover:bg-orange-400 
-                          transition duration-300"
+                  class="w-full bg-red-500 hover:bg-red-600 text-white py-3 px-6 rounded-lg 
+                        font-medium transition-colors duration-300"
                   :disabled="isUpdating"
                 >
-                  {{ isUpdating ? 'Actualizando...' : 'Actualizar Perfil' }}
+                  {{ isUpdating ? 'Actualizando...' : 'Guardar Cambios' }}
                 </button>
               </form>
             </div>
   
             <!-- Seguridad -->
-            <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
-              <h3 class="text-xl font-bold text-orange-500 mb-6">Seguridad</h3>
+            <div class="bg-white/90 backdrop-blur-sm rounded-lg p-6 shadow-lg">
+              <h3 class="text-xl font-bold text-red-600 mb-6 border-b pb-2">Seguridad</h3>
+              
               <div class="mb-8">
-                <h4 class="text-lg text-white mb-4">Cambiar Contraseña</h4>
+                <h4 class="text-lg text-gray-800 mb-4 font-medium">Cambiar Contraseña</h4>
                 <form @submit.prevent="updatePassword" class="space-y-4">
                   <div>
                     <input
                       v-model="passwordData.currentPassword"
                       type="password"
                       placeholder="Contraseña actual"
-                      class="w-full px-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none 
-                              focus:ring-2 focus:ring-orange-500"
+                      class="w-full px-4 py-3 bg-white text-gray-800 rounded-lg border border-gray-200
+                            focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
                     />
                   </div>
                   <div>
@@ -101,8 +112,8 @@
                       v-model="passwordData.newPassword"
                       type="password"
                       placeholder="Nueva contraseña"
-                      class="w-full px-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none 
-                              focus:ring-2 focus:ring-orange-500"
+                      class="w-full px-4 py-3 bg-white text-gray-800 rounded-lg border border-gray-200
+                            focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
                     />
                   </div>
                   <div>
@@ -110,43 +121,47 @@
                       v-model="passwordData.confirmPassword"
                       type="password"
                       placeholder="Confirmar nueva contraseña"
-                      class="w-full px-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none 
-                              focus:ring-2 focus:ring-orange-500"
+                      class="w-full px-4 py-3 bg-white text-gray-800 rounded-lg border border-gray-200
+                            focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
                     />
                   </div>
                   <button
                     type="submit"
-                    class="w-full bg-orange-500 text-white py-2 px-4 rounded-lg hover:bg-orange-400 
-                            transition duration-300"
+                    class="w-full bg-red-500 hover:bg-red-600 text-white py-3 px-6 rounded-lg 
+                          font-medium transition-colors duration-300"
                     :disabled="isUpdatingPassword"
                   >
                     {{ isUpdatingPassword ? 'Actualizando...' : 'Cambiar Contraseña' }}
                   </button>
                 </form>
               </div>
-              <!-- 2FA Setup -->
+              
               <Twofactorsetup
                 @status-change="handle2FAStatusChange"
                 @notification="handle2FANotification"
               />
             </div>
           </div>
-        </div>
   
-        <!-- Notificación -->
-        <div
-          v-if="notification.show"
-          class="fixed bottom-4 right-4 p-4 rounded-lg shadow-lg"
-          :class="{
-            'bg-green-500': notification.type === 'success',
-            'bg-red-500': notification.type === 'error'
-          }"
-        >
-          <p class="text-white">{{ notification.message }}</p>
+          <!-- Notificación -->
+          <div
+            v-if="notification.show"
+            class="fixed bottom-4 right-4 p-4 rounded-lg shadow-lg border"
+            :class="{
+              'bg-green-100 border-green-200 text-green-800': notification.type === 'success',
+              'bg-red-100 border-red-200 text-red-800': notification.type === 'error'
+            }"
+          >
+            <p class="font-medium flex items-center gap-2">
+              <span v-if="notification.type === 'success'">✓</span>
+              <span v-else>⚠️</span>
+              {{ notification.message }}
+            </p>
+          </div>
         </div>
-      </section>
+        </section>
     </div>
-  </template>
+</template>
 
 <script setup>
 import { ref, computed, watchEffect } from 'vue';
@@ -157,7 +172,8 @@ const { token, data: userData } = useAuth();
 
 const formData = ref({
     username: '',
-    email: ''
+    email: '',
+    phone_number: ''
 });
 
 const passwordData = ref({
@@ -183,7 +199,8 @@ watchEffect(() => {
     if (userData.value) {
         formData.value = {
             username: userData.value.username || '',
-            email: userData.value.email || ''
+            email: userData.value.email || '',
+            phone_number: userData.value.phone_number || ''
         };
     }
 });
