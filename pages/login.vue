@@ -49,7 +49,7 @@ Copy
                 type="password" 
                 required
                 class="w-full px-4 py-3 border-2 border-red-200 rounded-lg focus:border-red-500 focus:ring-2 focus:ring-red-300 transition-all placeholder-red-400"
-                placeholder="****"
+                placeholder="******"
               >
               <svg class="absolute right-3 top-3.5 h-5 w-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>

@@ -46,8 +46,8 @@
 <script setup>
 definePageMeta({
   auth: {
-    unauthenticatedOnly: true,    // Solo permite acceso a NO autenticados
-    navigateAuthenticatedTo: '/'  // Redirige usuarios autenticados a la home
+    unauthenticatedOnly: true,    
+    navigateAuthenticatedTo: '/'  
   }
 });
 </script>

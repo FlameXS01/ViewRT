@@ -16,6 +16,19 @@
             <span class="font-medium">Productos</span>
           </NuxtLink>
         </li>
+        <li v-if="showProducts">
+          <NuxtLink 
+            to="/profile" 
+            :class="mobile ? 
+              'flex items-center px-4 py-3 space-x-3 text-red-50 hover:bg-red-600/90 transition-colors rounded-lg' : 
+              'flex items-center space-x-2 text-red-100 hover:text-white group transition-colors'"
+          >
+            <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+            </svg>
+            <span class="font-medium">Perfil</span>
+          </NuxtLink>
+        </li>
 
         <!-- Unidades -->
         <li v-if="showUnits">
