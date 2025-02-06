@@ -11,7 +11,7 @@ export default defineNuxtConfig({
 
   // Configuración SEO
   site: {
-    url: "https://localhost",
+    url: "https://viewrt.onrender.com",
     name: "Virtual RT",
     description: "We are the shoop online. Check our products!",
     defaultLocale: 'es',
@@ -21,11 +21,32 @@ export default defineNuxtConfig({
     identity: {
       type: "Organization", // ⚠️ Tipo debe ser uno oficial: Organization o Person
       name: "Virtual RT",
-      url: "https://localhost",
     },
   },
 
   css: ["@/assets/css/tailwind.css"],
+
+  app: {
+    head: {
+      title: "Virtual RT",
+      meta: [
+        { charset: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        {
+          hid: "description",
+          name: "description",
+          content: "We are the shoop online. Check our products!",
+        },
+        { name: "keywords", content: "We are the shoop online. Check our products!" },
+        { name: "author", content: "null" },
+        { property: "og:title", content: "Virtual RT" },
+        { property: "og:description", content: "We are the shoop online. Check our products!" },
+        { property: "og:image", content: "/logo.png" }, // Ruta de tu logo
+        { property: "og:url", content: "https://viewrt.onrender.com" }, // URL de tu sitio
+      ],
+      link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    },
+  },
 
   postcss: {
     plugins: {

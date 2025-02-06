@@ -47,9 +47,7 @@
   animation: text-shine 3s ease-in-out infinite alternate;
 }
 </style>
-<script setup>
-// No necesitas importar la imagen manualmente, NuxtImg la maneja automáticamente
-</script>
+
 
 <style scoped>
 /* Estilos adicionales si los necesitas */
